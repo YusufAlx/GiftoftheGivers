@@ -9,6 +9,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(o => { o.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.ConfigureApplicationCookie(o => o.LoginPath = "/Account/Login");
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 var app = builder.Build();
 if (!app.Environment.IsDevelopment()) { app.UseExceptionHandler("/Home/Error"); app.UseHsts(); }
 app.UseHttpsRedirection(); app.UseStaticFiles(); app.UseRouting(); app.UseAuthentication(); app.UseAuthorization();
