@@ -1,0 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+namespace GiftOfTheGivers.Web.Models;
+public class Donation { public int Id { get; set; } [Required] public string DonationType { get; set; } = "One-time"; [Range(.01, 100000000)] public decimal Amount { get; set; } [Required] public string Currency { get; set; } = "ZAR"; public bool IsAnonymous { get; set; } public string? DonorName { get; set; } public DateTime DonationDate { get; set; } = DateTime.UtcNow; public string TaxCertificateNumber { get; set; } = ""; }
+public class Volunteer { public int Id { get; set; } [Required] public string FullName { get; set; } = ""; [Required] public string Skills { get; set; } = ""; [Required] public string Availability { get; set; } = ""; [EmailAddress] public string? Email { get; set; } public DateTime RegistrationDate { get; set; } = DateTime.UtcNow; }
+public class ProjectUpdate { public int Id { get; set; } [Required] public string ProjectName { get; set; } = ""; [Required] public string UpdateText { get; set; } = ""; public string PostedBy { get; set; } = ""; public DateTime PostedDate { get; set; } = DateTime.UtcNow; }

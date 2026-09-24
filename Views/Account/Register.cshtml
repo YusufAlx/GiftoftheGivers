@@ -1,0 +1,3 @@
+@model RegisterViewModel
+@{ ViewData["Title"] = "Register"; }
+<div class="card form-card"><div class="card-body p-4"><h1>Create donor account</h1><p>New registrations are assigned the Donor role.</p><form method="post"><div asp-validation-summary="ModelOnly" class="text-danger"></div><div class="row"><div class="col"><label asp-for="FirstName"></label><input asp-for="FirstName" class="form-control"/></div><div class="col"><label asp-for="LastName"></label><input asp-for="LastName" class="form-control"/></div></div><label asp-for="Email" class="mt-3"></label><input asp-for="Email" class="form-control"/><label asp-for="Password" class="mt-3"></label><input asp-for="Password" class="form-control"/><button class="btn btn-primary mt-4">Register</button></form></div></div>

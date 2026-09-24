@@ -1,0 +1,3 @@
+@model Volunteer
+@{ ViewData["Title"] = "Registration confirmed"; }
+<div class="card form-card border-success"><div class="card-body p-4"><h1 class="text-success">Thank you, @Model.FullName!</h1><p>Your volunteer registration has been received. Our team will review it and contact you soon.</p><a class="btn btn-primary" asp-controller="Home" asp-action="Index">Return home</a></div></div>

@@ -1,0 +1,4 @@
+using GiftOfTheGivers.Web.Models;
+using Microsoft.AspNetCore.Identity;
+namespace GiftOfTheGivers.Web.Data;
+public static class SeedData { public static async Task Initialize(IServiceProvider services) { var roles = services.GetRequiredService<RoleManager<IdentityRole>>(); var users = services.GetRequiredService<UserManager<ApplicationUser>>(); foreach (var role in new[] { "Donor", "Employee" }) if (!await roles.RoleExistsAsync(role)) await roles.CreateAsync(new IdentityRole(role)); const string email = "employee@giftofthegivers.org"; var employee = await users.FindByEmailAsync(email); if (employee is null) { employee = new ApplicationUser { UserName = email, Email = email, EmailConfirmed = true, FirstName = "Gift", LastName = "Employee" }; await users.CreateAsync(employee, "Employee@123"); } if (!await users.IsInRoleAsync(employee, "Employee")) await users.AddToRoleAsync(employee, "Employee"); } }
