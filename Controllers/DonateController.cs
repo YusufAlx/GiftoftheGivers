@@ -71,9 +71,13 @@ public class DonateController : Controller
 
             if (!functionResponse.IsSuccessStatusCode)
             {
+                var errorBody = await functionResponse.Content.ReadAsStringAsync();
+
                 ModelState.AddModelError(
                     "",
-                    "The Azure Donation Function could not process the donation.");
+                    $"Azure Function Error: {(int)functionResponse.StatusCode} " +
+                    $"{functionResponse.StatusCode}. " +
+                    $"Response: {errorBody}");
 
                 return View(donation);
             }
@@ -105,11 +109,12 @@ public class DonateController : Controller
                 nameof(Certificate),
                 new { id = donation.Id });
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ModelState.AddModelError(
                 "",
-                "Unable to connect to the Azure Donation Function.");
+                $"Unable to connect to the Azure Donation Function. " +
+                $"Error: {ex.Message}");
 
             return View(donation);
         }
