@@ -1,3 +1,4 @@
+Liam Hendricks
 # Gift of the Givers — ASP.NET Core application
 
 This is a .NET 8 MVC web application that uses ASP.NET Core Identity and SQLite. It implements the two required roles:
